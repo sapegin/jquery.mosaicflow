@@ -94,6 +94,7 @@
 				itemsCnt = this.items.length,
 				itemsHeights = {},
 				columnsHeights = [];
+				console.log('items', itemsCnt);
 			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
 				var column = this.columns.eq(columnIdx);
 				columnsHeights[columnIdx] = 0;

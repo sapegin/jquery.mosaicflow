@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mosaic Flow: Pinterest like responsive image grid for jQuery that doesn’t sucks.</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="Pinterest like responsive image grid for jQuery that doesn’t sucks.">
+	<script src="js/libs/modernizr.js"></script>
+	<link rel="stylesheet" href="build/styles.css">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow.min.css">
+	<link rel="stylesheet" href="http://sapegin.github.com/social-likes/src/social-likes.css">
+	<link rel="image_src" href="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.png">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="http://sapegin.github.com/jquery.mosaicflow/">
+	<meta property="og:title" content="Mosaic Flow">
+	<meta property="og:description" content="Pinterest like responsive image grid for jQuery that doesn’t sucks.">
+	<meta property="og:image" content="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.png">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@sapegin">
+	<style>
+.mosaicflow__column {
+	float:left;
+	}
+
+.post {
+	position:relative;
+	}
+	.post img {
+		display:block;
+		width:100%;
+		max-width:500px;
+		height:auto;
+		}
+	.post p {
+		position:absolute;
+		bottom:0;
+		left:0;
+		width:100%;
+		margin:0;
+		padding:5px;
+		background:hsla(0,0%,0%,.5);
+		color:#fff;
+		font-size:14px;
+		text-shadow:1px 1px 1px hsla(0,0%,0%,.75);
+		opacity:0;
+		-webkit-transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+		   -moz-transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+		     -o-transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+		        transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+		}
+	.post:hover p {
+		opacity:1;
+		}
+	</style>
+</head>
+<body>
+	<a href="https://github.com/sapegin/jquery.mosaicflow" class="forkme">Fork me on GitHub</a>
+
+	<div class="wrapper">
+		<h1>Mosaic Flow</h1>
+		<div class="subtitle">Pinterest like responsive image grid for jQuery that doesn’t sucks</div>
+		<div class="description">
+			<p>It allows you to do stuff like this. Try to shrink you browser. It’s responsive and amazingly fast!</p>
+		</div>
+
+
+		<div class="clearfix mosaicflow">
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2012/09/21-09-2012-275-300x300.jpg"  alt="">
+				<p>Свадьба Михаила и&nbsp;Елены. Сентябрь 2012, Ливадия</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/01-08-2012-123-300x200.jpg"  alt="">
+				<p>Юля + Дима. Предсвадебная прогулка по&nbsp;Тель-Авиву и&nbsp;старом</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2012/09/0141-300x300.jpg"  alt="">
+				<p>Юля + Дима. Свадьба в&nbsp;Израиле</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/22-06-2012-72-300x200.jpg"  alt="">
+				<p>Оля и&nbsp;Максим в&nbsp;ожидании малышастика:)</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/09/03-09-2011-322-300x300.jpg"  alt="">
+				<p>Свадьба Кати и&nbsp;Кирилла, 3&nbsp;сентября 2011&nbsp;г.</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/FE4G7559-300x200.jpg"  alt="">
+				<p>Сергей, Наташа и&nbsp;Алиночка. Первая встреча с&nbsp;морем!</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/06/FE4G9617-300x200.jpg"  alt="">
+				<p>Наталья и&nbsp;Алексей, фотосессия на&nbsp;годовщину свадьбы</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/03/FE4G9312-300x200.jpg"  alt="">
+				<p>Ольга и&nbsp;Маури. Фотосессия в&nbsp;парке Сан-Суси в&nbsp;Германи</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/08/FE4G5494-300x300.jpg"  alt="">
+				<p>Аня и&nbsp;Саша в&nbsp;ожидании малыша!:)</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/09/16-09-2011-403-300x300.jpg"  alt="">
+				<p>Свадьба Татьяны и&nbsp;Евгения. Сентябрь 2011, Москва</p>
+			</div>
+
+			<!--div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2011/08/11-08-2011-106-300x200.jpg"  alt="">
+				<p>Аня и&nbsp;Саша, лав-стори в&nbsp;Новом Свете</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/07/16-07-2011-410-300x300.jpg"  alt="">
+				<p>Свадьба Нади и&nbsp;Саши, 16&nbsp;июля 2011&nbsp;г.</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/07/29-07-2011-019-300x300.jpg"  alt="">
+				<p>Свадьба Рената и&nbsp;Евгении, 29&nbsp;июля 2011&nbsp;г.</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/06/29-05-2011-65-300x300.jpg"  alt="">
+				<p>Саша, Дима и&nbsp;Тёма! Семейная фотосессия</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2010/03/FE4G7142-300x200.jpg"  alt="">
+				<p>Empty Streets</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2010/09/93-300x300.jpg"  alt="">
+				<p>Свадьба Юлии и&nbsp;Аванеса. Сентябрь 2010, Евпатория</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2012/12/19-09-2010-874-300x300.jpg"  alt="">
+				<p>Свадьба Ани и&nbsp;Вити, 19&nbsp;сентября 2010&nbsp;г.</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/FE4G73281-300x200.jpg"  alt="">
+				<p>Sunburn</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/12/10-04-2010-032-300x200.jpg"  alt="">
+				<p>Свадьба Юлии и&nbsp;Георга. Апрель 2010, Симферополь</p>
+			</div>
+
+			<div class="post">
+				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2011/05/01-05-2011-231-300x200.jpg"  alt="">
+				<p>Яна и&nbsp;Петр, свадебная фотосессия в&nbsp;Крыму</p>
+			</div-->
+		</div>
+
+		<div class="download-row">
+			<div class="download-row__links">
+				<a href="https://github.com/sapegin/jquery.mosaicflow/zipball/master" class="button" download="jquery.mosaicflow.zip">Download Mosaic Flow</a> <nobr>or <a href="https://github.com/sapegin/jquery.mosaicflow">view source</a> on GitHub</nobr>
+			</div>
+		</div>
+
+		<p><strong>How to install:</strong></p>
+
+<div class="code">
+<pre><code class="language-html">&lt;style>
+.mosaicflow__column {
+	float:left;
+	}
+.item img {
+	display:block;
+	width:100%;
+	height:auto;
+	}
+&lt;/style>
+
+&lt;div class="clearfix mosaicflow">
+	&lt;div class="post">
+		&lt;img width="300" height="150" src="1.jpg" alt="">
+	&lt;/div>
+	&lt;div class="post">
+		&lt;img width="150" height="300" src="2.jpg" alt="">
+	&lt;/div>
+	…
+&lt;/div>
+
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">&lt;/script>
+&lt;script src="jquery.mosaicflow.js">&lt;/script>
+&lt;script>
+$('.mosaicflow').mosaicflow();
+&lt;/script>
+</code></pre>
+</div>
+
+		<p>See more examples and all available options in <a href="https://github.com/sapegin/jquery.mosaicflow/blob/master/Readme.md">documentation</a>.</p>
+
+		<div class="footer">
+			<div class="share">
+				<ul class="social-likes">
+					<li class="facebook" title="Share link on Facebook">Facebook</li>
+					<li class="twitter" data-via="sapegin" title="Share link on Twitter">Twitter</li>
+					<li class="plusone" title="Share link on Google+">Google+</li>
+				</ul>
+			</div>
+			<a href="http://sapegin.me/contacts">Contact me</a> if you have any questions or <a href="https://github.com/sapegin/jquery.mosaicflow/issues">file an issue</a> on GitHub.
+		</div>
+
+		<div class="octocat"><a href="http://github.com/">GitHub</a></div>
+
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="src/jquery.mosaicflow.js"></script>
+	<script src="http://sapegin.github.com/social-likes/src/social-likes.min.js"></script>
+	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
+	<script>
+$('.mosaicflow').mosaicflow();
+hljs.tabReplace = '<span class="indent">\t</span>';
+hljs.initHighlightingOnLoad();
+	</script>
+
+	<script>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter6395488 = new Ya.Metrika({id:6395488, clickmap:true, trackLinks:true, webvisor:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script>
+	<noscript><div><img src="//mc.yandex.ru/watch/6395488" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+</body>
+</html>
