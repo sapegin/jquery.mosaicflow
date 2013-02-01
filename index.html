@@ -7,16 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="description" content="Pinterest like responsive image grid for jQuery that doesn’t sucks.">
-	<script src="js/libs/modernizr.js"></script>
 	<link rel="stylesheet" href="build/styles.css">
 	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow.min.css">
 	<link rel="stylesheet" href="http://sapegin.github.com/social-likes/src/social-likes.css">
-	<link rel="image_src" href="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.png">
+	<link rel="image_src" href="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.jpg">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="http://sapegin.github.com/jquery.mosaicflow/">
 	<meta property="og:title" content="Mosaic Flow">
 	<meta property="og:description" content="Pinterest like responsive image grid for jQuery that doesn’t sucks.">
-	<meta property="og:image" content="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.png">
+	<meta property="og:image" content="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.jpg">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:creator" content="@sapegin">
 	<style>
@@ -24,16 +23,16 @@
 	float:left;
 	}
 
-.post {
+.mosaicflow__item {
 	position:relative;
 	}
-	.post img {
+	.mosaicflow__item img {
 		display:block;
 		width:100%;
 		max-width:500px;
 		height:auto;
 		}
-	.post p {
+	.mosaicflow__item p {
 		position:absolute;
 		bottom:0;
 		left:0;
@@ -50,7 +49,7 @@
 		     -o-transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
 		        transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
 		}
-	.post:hover p {
+	.mosaicflow__item:hover p {
 		opacity:1;
 		}
 	</style>
@@ -67,105 +66,66 @@
 
 
 		<div class="clearfix mosaicflow">
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2012/09/21-09-2012-275-300x300.jpg"  alt="">
-				<p>Свадьба Михаила и&nbsp;Елены. Сентябрь 2012, Ливадия</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-08-20_5D_1287_Artem_Sapegin.jpg"  alt="">
+				<p>Dessi the Dachshund</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/01-08-2012-123-300x200.jpg"  alt="">
-				<p>Юля + Дима. Предсвадебная прогулка по&nbsp;Тель-Авиву и&nbsp;старом</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="200" src="img/2012-08-24_5D_2066_Artem_Sapegin.jpg"  alt="">
+				<p>Tsiri on Baltic Sea</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2012/09/0141-300x300.jpg"  alt="">
-				<p>Юля + Дима. Свадьба в&nbsp;Израиле</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-10-21_5D_3178_Artem_Sapegin.jpg"  alt="">
+				<p>Ciyar the Saluki</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/22-06-2012-72-300x200.jpg"  alt="">
-				<p>Оля и&nbsp;Максим в&nbsp;ожидании малышастика:)</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="200" src="img/2012-08-26_5D_2551_Artem_Sapegin.jpg"  alt="">
+				<p>Tsiri Having Fun by the Sea</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/09/03-09-2011-322-300x300.jpg"  alt="">
-				<p>Свадьба Кати и&nbsp;Кирилла, 3&nbsp;сентября 2011&nbsp;г.</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-08-26_5D_2323_Artem_Sapegin.jpg"  alt="">
+				<p>Dessi Meets the Sea</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/FE4G7559-300x200.jpg"  alt="">
-				<p>Сергей, Наташа и&nbsp;Алиночка. Первая встреча с&nbsp;морем!</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="200" src="img/2012-05-19_5D_9670_Artem_Sapegin.jpg"  alt="">
+				<p>Tsiri the Saluki</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/06/FE4G9617-300x200.jpg"  alt="">
-				<p>Наталья и&nbsp;Алексей, фотосессия на&nbsp;годовщину свадьбы</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="200" src="img/2012-08-20_5D_1165_Artem_Sapegin.jpg"  alt="">
+				<p>Dessi on a Waterfall</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/03/FE4G9312-300x200.jpg"  alt="">
-				<p>Ольга и&nbsp;Маури. Фотосессия в&nbsp;парке Сан-Суси в&nbsp;Германи</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="200" src="img/2011-05-28_5D_4035_Artem_Sapegin.jpg"  alt="">
+				<p>Dessi in Dandelion Field</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/08/FE4G5494-300x300.jpg"  alt="">
-				<p>Аня и&nbsp;Саша в&nbsp;ожидании малыша!:)</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-12-09_5D_3758_Artem_Sapegin.jpg"  alt="">
+				<p>New Year Postcard from Tsiri and Ciyar</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/09/16-09-2011-403-300x300.jpg"  alt="">
-				<p>Свадьба Татьяны и&nbsp;Евгения. Сентябрь 2011, Москва</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-10-21_5D_3422_Artem_Sapegin.jpg"  alt="">
+				<p>Beautiful Afghan Hound Girl</p>
 			</div>
 
-			<!--div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2011/08/11-08-2011-106-300x200.jpg"  alt="">
-				<p>Аня и&nbsp;Саша, лав-стори в&nbsp;Новом Свете</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-10-21_5D_3414_Artem_Sapegin.jpg"  alt="">
+				<p>Running Ciyar and Afgan Girl</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/07/16-07-2011-410-300x300.jpg"  alt="">
-				<p>Свадьба Нади и&nbsp;Саши, 16&nbsp;июля 2011&nbsp;г.</p>
+			<div class="mosaicflow__item">
+				<img width="300" height="300" src="img/2012-08-26_5D_2378_Artem_Sapegin.jpg"  alt="">
+				<p>Dessi Walking on a Sea Shore</p>
 			</div>
 
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/07/29-07-2011-019-300x300.jpg"  alt="">
-				<p>Свадьба Рената и&nbsp;Евгении, 29&nbsp;июля 2011&nbsp;г.</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2011/06/29-05-2011-65-300x300.jpg"  alt="">
-				<p>Саша, Дима и&nbsp;Тёма! Семейная фотосессия</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2010/03/FE4G7142-300x200.jpg"  alt="">
-				<p>Empty Streets</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2010/09/93-300x300.jpg"  alt="">
-				<p>Свадьба Юлии и&nbsp;Аванеса. Сентябрь 2010, Евпатория</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="300" src="http://breslavtsev.com/wp-content/uploads/2012/12/19-09-2010-874-300x300.jpg"  alt="">
-				<p>Свадьба Ани и&nbsp;Вити, 19&nbsp;сентября 2010&nbsp;г.</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/09/FE4G73281-300x200.jpg"  alt="">
-				<p>Sunburn</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2012/12/10-04-2010-032-300x200.jpg"  alt="">
-				<p>Свадьба Юлии и&nbsp;Георга. Апрель 2010, Симферополь</p>
-			</div>
-
-			<div class="post">
-				<img width="300" height="200" src="http://breslavtsev.com/wp-content/uploads/2011/05/01-05-2011-231-300x200.jpg"  alt="">
-				<p>Яна и&nbsp;Петр, свадебная фотосессия в&nbsp;Крыму</p>
-			</div-->
 		</div>
 
 		<div class="download-row">
@@ -174,36 +134,32 @@
 			</div>
 		</div>
 
-		<p><strong>How to install:</strong></p>
+		<p><strong>How to use:</strong></p>
 
 <div class="code">
 <pre><code class="language-html">&lt;style>
 .mosaicflow__column {
 	float:left;
 	}
-.item img {
+.mosaicflow__item img {
 	display:block;
 	width:100%;
 	height:auto;
 	}
 &lt;/style>
 
-&lt;div class="clearfix mosaicflow">
-	&lt;div class="post">
-		&lt;img width="300" height="150" src="1.jpg" alt="">
-	&lt;/div>
-	&lt;div class="post">
-		&lt;img width="150" height="300" src="2.jpg" alt="">
-	&lt;/div>
-	…
-&lt;/div>
-
 &lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">&lt;/script>
 &lt;script src="jquery.mosaicflow.js">&lt;/script>
-&lt;script>
-$('.mosaicflow').mosaicflow();
-&lt;/script>
-</code></pre>
+
+&lt;div class="clearfix <b>mosaicflow</b>">
+	&lt;div class="mosaicflow__item">
+		&lt;img width="500" height="300" src="1.jpg" alt="">
+	&lt;/div>
+	&lt;div class="mosaicflow__item">
+		&lt;img width="500" height="500" src="2.jpg" alt="">
+	&lt;/div>
+	…
+&lt;/div></code></pre>
 </div>
 
 		<p>See more examples and all available options in <a href="https://github.com/sapegin/jquery.mosaicflow/blob/master/Readme.md">documentation</a>.</p>
@@ -229,7 +185,6 @@ $('.mosaicflow').mosaicflow();
 	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 
 	<script>
-$('.mosaicflow').mosaicflow();
 hljs.tabReplace = '<span class="indent">\t</span>';
 hljs.initHighlightingOnLoad();
 	</script>

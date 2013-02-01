@@ -21,10 +21,11 @@
 	'use strict';
 
 	$.fn.mosaicflow = function(options) {
-		options = $.extend({}, $.fn.mosaicflow.defaults, options);
+		var elem = $(this);
+		options = $.extend({}, $.fn.mosaicflow.defaults, options, dataToOptions(elem));
 
 		return this.each(function() {
-			new Mosaicflow($(this), options);
+			new Mosaicflow(elem, options);
 		});
 	};
 
@@ -94,7 +95,6 @@
 				itemsCnt = this.items.length,
 				itemsHeights = {},
 				columnsHeights = [];
-				console.log('items', itemsCnt);
 			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
 				var column = this.columns.eq(columnIdx);
 				columnsHeights[columnIdx] = 0;
@@ -132,5 +132,18 @@
 			}
 		}
 	};
+
+	// Camelize data-attributes
+	function dataToOptions(elem) {
+		var options = {};
+		var data = elem.data();
+		for (var key in data) {
+			options[key.replace(/-(\w)/g, function(m, l) { return l.toUpper(); })] = data[key];
+		}
+		return options;
+	}
+
+	// Auto init
+	$(function() { $('.mosaicflow').mosaicflow() });
 
 }));

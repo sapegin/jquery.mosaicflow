@@ -19,7 +19,7 @@ module.exports = (grunt) ->
 					"build/styles.css": "styles/index.styl"
 		imgo:
 			images:
-				src: "images/*",
+				src: "img/*",
 				skip: require("os").platform() == "win32"
 		watch:
 			stylus:
