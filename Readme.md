@@ -1,6 +1,6 @@
 # Mosaic Flow
 
-Pinterest like responsive image grid for jQuery that doesn’t sucks. See [live example](http://sapegin.github.com/jquery.mosaicflow/).
+Pinterest like responsive image grid for jQuery that doesn’t suck. See [live example](http://sapegin.github.com/jquery.mosaicflow/).
 
 
 ## Features
