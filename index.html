@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="description" content="Pinterest like responsive image grid for jQuery that doesn’t sucks.">
+	<link rel="stylesheet" href="http://sapegin.github.com/social-likes/src/social-likes.css">
 	<link rel="stylesheet" href="build/styles.css">
 	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/tomorrow.min.css">
-	<link rel="stylesheet" href="http://sapegin.github.com/social-likes/src/social-likes.css">
 	<link rel="image_src" href="http://sapegin.github.com/jquery.mosaicflow/img/mosaicflow.jpg">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="http://sapegin.github.com/jquery.mosaicflow/">
@@ -189,11 +189,12 @@
 hljs.tabReplace = '<span class="indent">\t</span>';
 hljs.initHighlightingOnLoad();
 var socialLikesButtons = {
-	counterUrl: 'https://api.github.com/repos/sapegin/jquery.mosaicflow?callback=?',
-	convertNumber: function(data) {
-		return data.data.watchers;
-	},
 	github: {
+		counterUrl: 'https://api.github.com/repos/sapegin/jquery.mosaicflow?callback=?',
+		convertNumber: function(data) {
+			console.log(data);
+			return data.data.watchers_count;
+		},
 		clickUrl: 'https://github.com/sapegin/jquery.mosaicflow/'
 	}
 };
