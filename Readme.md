@@ -8,16 +8,17 @@ Pinterest like responsive image grid for jQuery that doesn’t sucks. See [live 
 - Simple and easy to install.
 - Responsive (shows as many columns as needed).
 - Very fast.
+- Only 1 KB (minified gzipped).
 - You can add some HTML: info overlay for example.
 
 
 ## Installation
 
-Include jQuery and `jquery.mosaicflow.js` onto your page:
+Include jQuery and `jquery.mosaicflow.min.js` onto your page:
 
 ```html
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="jquery.mosaicflow.js"></script>
+<script src="jquery.mosaicflow.min.js"></script>
 ```
 
 Add some CSS for column layout and to make your content responsive:

@@ -1,0 +1,31 @@
+{
+  "name": "mosaicflow",
+  "title": "Mosaic Flow",
+  "description": "Pinterest like responsive image grid for jQuery that doesn’t sucks.",
+  "keywords": [
+    "pinterest",
+    "images",
+    "grid",
+    "responsive",
+    "columns"
+  ],
+  "version": "0.1.0",
+  "author": {
+    "name": "Artem Sapegin",
+    "email": "artem@sapegin.ru",
+    "url": "http://sapegin.me"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sapegin/jquery.mosaicflow/blob/master/license.md"
+    }
+  ],
+  "bugs": "https://github.com/sapegin/jquery.mosaicflow/issues",
+  "homepage": "http://sapegin.github.com/jquery.mosaicflow/",
+  "docs": "https://github.com/sapegin/jquery.mosaicflow/blob/master/Readme.md",
+  "demo": "http://sapegin.github.com/jquery.mosaicflow/",
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}

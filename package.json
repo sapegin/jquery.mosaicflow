@@ -1,0 +1,11 @@
+{
+  "name": "Mosaic Flow",
+  "version": "0.0.0",
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.1.1",
+    "matchdep": "~0.1.1",
+    "grunt-contrib-uglify": "~0.1.1rc6",
+    "grunt-contrib-jshint": "~0.1.1rc6",
+    "grunt": "~0.4.0rc7"
+  }
+}
