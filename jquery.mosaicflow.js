@@ -135,15 +135,18 @@
 
 	// Camelize data-attributes
 	function dataToOptions(elem) {
+		function upper(m, l) {
+			return l.toUpper();
+		}
 		var options = {};
 		var data = elem.data();
 		for (var key in data) {
-			options[key.replace(/-(\w)/g, function(m, l) { return l.toUpper(); })] = data[key];
+			options[key.replace(/-(\w)/g, upper)] = data[key];
 		}
 		return options;
 	}
 
 	// Auto init
-	$(function() { $('.mosaicflow').mosaicflow() });
+	$(function() { $('.mosaicflow').mosaicflow(); });
 
 }));
