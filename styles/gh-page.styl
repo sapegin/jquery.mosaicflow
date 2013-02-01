@@ -280,9 +280,41 @@ pre code::-webkit-scrollbar-thumb {
 }
 
 .share {
-    margin-bottom:spacer;
+	margin-bottom:spacer;
 
-    .social-likes__button {
-        font-style:normal;
-    }
+	.social-likes__button {
+		font-style:normal;
+	}
+}
+
+
+// GitHub star button
+.social-likes__button_github,
+.social-likes__button_github:link,
+.social-likes__button_github:visited {
+	padding-left:19px;
+	background:#e6e6e6;
+	background:linear-gradient(top, #fafafa, #eaeaea);
+	color:#555;
+	border-color:#d4d4d4;
+	border-bottom-color:#bcbcbc;
+	text-decoration:none;
+}
+.social-likes__button_github:hover {
+	background:#efefef;
+	background:linear-gradient(top, #fff, #f0f0f0);
+	color:#555;
+	border-color:#d4d4d4;
+	border-bottom-color:#bcbcbc;
+}
+.social-likes__icon_github {
+	background-image:embedurl('../img/github.png');
+	background-position:3px 3px;
+}
+.social-likes__counter_github {
+	background:#fafafa;
+	border-color:#d4d4d4;
+}
+.social-likes__counter_github:after {
+	border-right-color:#d4d4d4;
 }

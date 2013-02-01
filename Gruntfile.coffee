@@ -12,6 +12,7 @@ module.exports = (grunt) ->
 			compile:
 				options:
 					"include css": true,
+					urlfunc: "embedurl",
 					paths: [
 						"blocks"
 					]

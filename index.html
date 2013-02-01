@@ -167,6 +167,7 @@
 		<div class="footer">
 			<div class="share">
 				<ul class="social-likes">
+					<li class="github" title="Star Mosaic Flow on GitHub">GitHub</li>
 					<li class="facebook" title="Share link on Facebook">Facebook</li>
 					<li class="twitter" data-via="sapegin" title="Share link on Twitter">Twitter</li>
 					<li class="plusone" title="Share link on Google+">Google+</li>
@@ -187,6 +188,15 @@
 	<script>
 hljs.tabReplace = '<span class="indent">\t</span>';
 hljs.initHighlightingOnLoad();
+var socialLikesButtons = {
+	counterUrl: 'https://api.github.com/repos/sapegin/jquery.mosaicflow?callback=?',
+	convertNumber: function(data) {
+		return data.data.watchers;
+	},
+	github: {
+		clickUrl: 'https://github.com/sapegin/jquery.mosaicflow/'
+	}
+};
 	</script>
 
 	<script>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter6395488 = new Ya.Metrika({id:6395488, clickmap:true, trackLinks:true, webvisor:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script>
