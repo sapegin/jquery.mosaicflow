@@ -93,6 +93,42 @@ Minimun item (or column) width. Decrease this number if you want more columns, o
 Fire on every layout change: initialization or change number of columns after window resize.
 
 
+## Methods
+
+`add`
+
+Add any html element into next smallest column.  
+Example:
+
+```javascript
+// Init mosaicflow
+var container = $('#mycontainer').mosaicflow();
+
+// Create new html node and append to smallest column
+var elm = $('<div>A new added element</div>');
+container.mosaicflow('add', elm);
+```
+
+
+`remove`
+
+Remove a given element from its column and updates columns height accordingly. It does not removes the node, just detaches it from document.  
+Example: 
+
+```javascript
+// Init mosaicflow
+var container = $('#mycontainer').mosaicflow();
+
+// Select the desired element to be removed
+var elm = $('#item-3');
+
+// Tell mosaicflow to detach element from its column
+container.mosaicflow('remove',elm);
+
+// now you can place detached node in another location or remove it if you don't need it anymore.
+elm.remove();
+```
+
 ---
 
 ## License
