@@ -186,8 +186,6 @@
 			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights),
 			height = 0;
 
-	
-
 			if (this.options.itemHeightCalculation==='auto') {
 						// Get height of elm
 				elm.css({
@@ -235,7 +233,7 @@
 
 			// Update column height
 			var x = column.index();
-			this.columnsHeights[ x ]-= this.itemsHeights[ elm.attr('id') ];
+			this.columnsHeights[x]-= this.itemsHeights[elm.attr('id')];
 
 			elm.detach();
 
