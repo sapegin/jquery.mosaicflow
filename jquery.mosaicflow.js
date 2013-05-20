@@ -63,7 +63,8 @@
 			this.itemsHeights   = {};
 			this.tempContainer  = $('<div/>').css('visibility','hidden');
 			this.workOnTemp     = false;
-			$('body').append(this.tempContainer);
+
+			this.container.append( this.tempContainer );
 
 			var that = this;
 			this.items.each(function(){
@@ -123,7 +124,9 @@
 			if (calculatedCnt !== createdCnt) {
 
 				this.columns = this.workingContainer.find('.' + this.options.columnClass);
-				this.columns.width((100 / calculatedCnt) + '%');
+				this.columns.each(function(){
+					$(this).css('width',(100 / calculatedCnt) + '%');
+				});
 				return true;
 			}
 
