@@ -103,14 +103,15 @@ CSS class of column element.
 
 `minItemWidth` (default: 240)
 
-Minimun item (or column) width. Decrease this number if you want more columns, or increase if you want less.
+Minimum item (or column) width. Decrease this number if you want more columns, or increase if you want less.
 
 `itemHeightCalculation` (default: `auto`)
 
-This option allows you to specify which method is going to be used to calculate items' heights. 
-`auto` value will calculate automatically each item's height after being placed in a column, so it is smart enough if your items are responsive and height is being modified as width is (which will happen as columns shrink or expand).  
-`attribute` will try to grab the value placed in `height` attribute of images when these are used as items. This is faster than `auto` because no calculation is done.  
-Valid values: `auto`, `attribute`.
+Method of calculation items’ heights:
+
+* `auto`—will calculate automatically each item’s height after being placed in a column, so it is smart enough if your items are responsive and height is being modified as width is (which will happen as columns shrink or expand).
+
+* `attribute`—will try to grab the value placed in `height` attribute of `<img>` tags when these are used as items. This is faster than `auto` because no calculation is done.
 
 
 ## Events
@@ -124,7 +125,8 @@ Fire on every layout change: initialization or change number of columns after wi
 
 `add`
 
-Add any html element into next smallest column.  
+Add any html element into next smallest column.
+
 Example:
 
 ```javascript
@@ -136,11 +138,10 @@ var elm = $('<div>A new added element</div>');
 container.mosaicflow('add', elm);
 ```
 
-
 `remove`
 
-Remove a given element from its column and updates columns height accordingly. It does not removes the node, just detaches it from document.  
-Example: 
+Remove a given element from its column and updates columns height accordingly. It does not removes the node, just detaches it from document.
+Example:
 
 ```javascript
 // Init mosaicflow
@@ -150,9 +151,9 @@ var container = $('#mycontainer').mosaicflow();
 var elm = $('#item-3');
 
 // Tell mosaicflow to detach element from its column
-container.mosaicflow('remove',elm);
+container.mosaicflow('remove', elm);
 
-// now you can place detached node in another location or remove it if you don't need it anymore.
+// Now you can place detached node in another location or remove it if you don't need it anymore.
 elm.remove();
 ```
 

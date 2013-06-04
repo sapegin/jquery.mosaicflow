@@ -25,15 +25,15 @@
 		var args = Array.prototype.slice.call(arguments,0);
 
 		return this.each(function() {
-
-			var elm = $(this),
-				data = elm.data('mosaicflow');
+			var elm = $(this);
+			var data = elm.data('mosaicflow');
 
 			if (!data) {
 				options = $.extend({}, $.fn.mosaicflow.defaults, options, dataToOptions(elm));
-				elm.data('mosaicflow', (data = new Mosaicflow(elm,options)));
+				data = new Mosaicflow(elm,options);
+				elm.data('mosaicflow', data);
 			}
-			else if( typeof options==='string' ) {
+			else if (typeof options === 'string') {
 				data[options](args[1]);
 			}
 		});
@@ -43,7 +43,7 @@
 		itemSelector: '> *',
 		columnClass: 'mosaicflow__column',
 		minItemWidth: 240,
-		itemHeightCalculation : 'auto'
+		itemHeightCalculation: 'auto'
 	};
 
 	function Mosaicflow(container, options) {
@@ -55,29 +55,36 @@
 
 	Mosaicflow.prototype = {
 		init: function() {
-			this.__uid          = cnt;
+			this.__uid = cnt++;
 			this.__uid_item_counter = 0;
-			this.items          = this.container.find(this.options.itemSelector);
-			this.columns        = [];
+			this.items = this.container.find(this.options.itemSelector);
+			this.columns = [];
 			this.columnsHeights = [];
-			this.itemsHeights   = {};
-			this.tempContainer  = $('<div/>').css('visibility','hidden');
-			this.workOnTemp     = false;
+			this.itemsHeights = {};
+			this.tempContainer = $('<div>').css('visibility', 'hidden');
+			this.workOnTemp = false;
+			this.autoCalculation = this.options.itemHeightCalculation === 'auto';
 
-			this.container.append( this.tempContainer );
+			this.container.append(this.tempContainer);
 
 			var that = this;
-			this.items.each(function(){
-				var elm = $(this),
-				    id = elm.attr('id');
+			this.items.each(function() {
+				var elm = $(this);
+				var id = elm.attr('id');
 				if (!id) {
-					// Generate a unique id
+					// Generate an unique id
 					id = that.generateUniqueId();
 					elm.attr('id', id);
 				}
 			});
 
-			this.refill();
+			this.container.css('visibility', 'hidden');
+			if (this.autoCalculation) {
+				$(window).load($.proxy(this.refill, this));
+			}
+			else {
+				this.refill();
+			}
 			$(window).resize($.proxy(this.refill, this));
 		},
 
@@ -90,14 +97,15 @@
 				// Remove excess columns
 				this.columns.filter(':hidden').remove();
 			}
+			this.container.css('visibility', 'visible');
 		},
 
 		ensureColumns: function() {
-			var createdCnt = this.columns.length,
-				calculatedCnt = this.numberOfColumns;
+			var createdCnt = this.columns.length;
+			var calculatedCnt = this.numberOfColumns;
 
-			this.tempContainer.css('width',this.container.width()+'px');
-			this.workingContainer = (createdCnt===0)? this.tempContainer:this.container;
+			this.tempContainer.width(this.container.width());
+			this.workingContainer = createdCnt === 0 ? this.tempContainer : this.container;
 
 			if (calculatedCnt > createdCnt) {
 				var neededCnt = calculatedCnt - createdCnt;
@@ -117,7 +125,7 @@
 					lastColumn--;
 				}
 
-				var diff = createdCnt-calculatedCnt;
+				var diff = createdCnt - calculatedCnt;
 				this.columnsHeights.splice(this.columnsHeights.length - diff, diff);
 			}
 
@@ -125,7 +133,7 @@
 
 				this.columns = this.workingContainer.find('.' + this.options.columnClass);
 				this.columns.each(function(){
-					$(this).css('width',(100 / calculatedCnt) + '%');
+					$(this).width((100 / calculatedCnt) + '%');
 				});
 				return true;
 			}
@@ -134,21 +142,23 @@
 		},
 
 		fillColumns: function() {
-			var columnsCnt = this.numberOfColumns,
-				itemsCnt = this.items.length;
+			var columnsCnt = this.numberOfColumns;
+			var itemsCnt = this.items.length;
 
 			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
 				var column = this.columns.eq(columnIdx);
 				this.columnsHeights[columnIdx] = 0;
 				for (var itemIdx = columnIdx; itemIdx < itemsCnt; itemIdx += columnsCnt) {
-					var item = this.items.eq(itemIdx),
-					height   = 0;
+					var item = this.items.eq(itemIdx);
+					var height = 0;
 					column.append(item);
 
-					if (this.options.itemHeightCalculation==='auto'){
-						height = item.outerHeight();	// Check height after being placed in its column.
+					if (this.autoCalculation) {
+						// Check height after being placed in its column
+						height = item.outerHeight();
 					}
-					else {// read img height attribute 
+					else {
+						// Read img height attribute
 						height = parseInt(item.find('img').attr('height'), 10);
 					}
 
@@ -159,7 +169,7 @@
 
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
 
-			if (this.workingContainer===this.tempContainer) {
+			if (this.workingContainer === this.tempContainer) {
 				this.container.append(this.tempContainer.children());
 			}
 			this.container.trigger('mosaicflow-layout');
@@ -167,15 +177,15 @@
 
 		levelBottomEdge: function(itemsHeights, columnsHeights) {
 			while (true) {
-				var lowestColumn = $.inArray(Math.min.apply(null, columnsHeights), columnsHeights),
-					highestColumn = $.inArray(Math.max.apply(null, columnsHeights), columnsHeights);
+				var lowestColumn = $.inArray(Math.min.apply(null, columnsHeights), columnsHeights);
+				var highestColumn = $.inArray(Math.max.apply(null, columnsHeights), columnsHeights);
 				if (lowestColumn === highestColumn) return;
 
-				var lastInHighestColumn = this.columns.eq(highestColumn).children().last(),
-					lastInHighestColumnHeight = itemsHeights[lastInHighestColumn.attr('id')],
-					lowestHeight = columnsHeights[lowestColumn],
-					highestHeight = columnsHeights[highestColumn],
-					newLowestHeight = lowestHeight + lastInHighestColumnHeight;
+				var lastInHighestColumn = this.columns.eq(highestColumn).children().last();
+				var lastInHighestColumnHeight = itemsHeights[lastInHighestColumn.attr('id')];
+				var lowestHeight = columnsHeights[lowestColumn];
+				var highestHeight = columnsHeights[highestColumn];
+				var newLowestHeight = lowestHeight + lastInHighestColumnHeight;
 
 				if (newLowestHeight >= highestHeight) return;
 
@@ -185,20 +195,20 @@
 			}
 		},
 
-		add : function(elm) {
-			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights),
-			height = 0;
+		add: function(elm) {
+			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights);
+			var height = 0;
 
-			if (this.options.itemHeightCalculation==='auto') {
-						// Get height of elm
+			if (this.autoCalculation) {
+				// Get height of elm
 				elm.css({
-					position:   'absolute',
+					position: 'absolute',
 					visibility: 'hidden',
-					display:    'block'
+					display: 'block'
 				}).appendTo('body');
-				
+
 				height = elm.outerHeight();
-	
+
 				elm.detach().css({
 					position: 'static',
 					visibility: 'visible'
@@ -214,29 +224,27 @@
 			}
 
 			// Update item collection.
-			// item needs to be placed at the end of this.items
-			// to keep order of elements
+			// Item needs to be placed at the end of this.items to keep order of elements
 			var arr = [];
-			this.items.each(function(){
+			this.items.each(function() {
 				arr.push(this);
 			});
 			arr.push(elm[0]);
 			this.items = $(arr);
 
 			this.itemsHeights[elm.attr('id')] = height;
-			this.columnsHeights[lowestColumn]+= height;
-			this.columns.eq(lowestColumn).append( elm );
+			this.columnsHeights[lowestColumn] += height;
+			this.columns.eq(lowestColumn).append(elm);
 
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
 			this.container.trigger('mosaicflow-layout');
 		},
 
-		remove : function(elm) {
+		remove: function(elm) {
 			var column = elm.parents('.' + this.options.columnClass);
 
 			// Update column height
-			var x = column.index();
-			this.columnsHeights[x]-= this.itemsHeights[elm.attr('id')];
+			this.columnsHeights[column.index()]-= this.itemsHeights[elm.attr('id')];
 
 			elm.detach();
 
@@ -246,11 +254,11 @@
 			this.container.trigger('mosaicflow-layout');
 		},
 
-		generateUniqueId : function() {
+		generateUniqueId: function() {
 			// Increment the counter
 			this.__uid_item_counter++;
 
-			// Return a unique ID
+			// Return an unique ID
 			return 'mosaic-' + this.__uid + '-itemid-' + this.__uid_item_counter;
 		}
 	};
