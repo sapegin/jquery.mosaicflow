@@ -1,6 +1,6 @@
 # Mosaic Flow
 
-Pinterest like responsive image grid for jQuery that doesn’t suck. See [live example](http://sapegin.github.com/jquery.mosaicflow/).
+Pinterest like responsive image or HTML grid for jQuery that doesn’t suck. See [live example](http://sapegin.github.com/jquery.mosaicflow/).
 
 
 ## Features
@@ -9,7 +9,7 @@ Pinterest like responsive image grid for jQuery that doesn’t suck. See [live e
 - Responsive (shows as many columns as needed).
 - Very fast.
 - Only 1 KB (minified gzipped).
-- You can add some HTML: info overlay for example.
+- You can use bare `img` tags or custom `HTML`.
 
 
 ## Installation
@@ -48,7 +48,27 @@ Add `.mosaicflow` CSS class to your content’s contaier:
 </div>
 ```
 
-Image sizes should be specified in HTML.
+Image sizes should be specified in HTML in conjunction with option `itemHeightCalculation = 'attribute'` for even a better performance.
+
+
+You can also use custom HTML as items:
+
+```html
+<div class="clearfix mosaicflow">
+	<div class="mosaicflow__item">
+		<h4>Lorem ipsum dolor sit amet</h4>
+		<p>Excepteur sint occaecat cupidatat non
+proident</p>
+	</div>
+	<div class="mosaicflow__item">
+		<h4>Lorem ipsum dolor sit amet</h4>
+		<p>Excepteur sint occaecat cupidatat non
+proident</p>
+	</div>
+	…
+</div>
+```
+
 
 
 ## Configuration and manual initialization
@@ -61,12 +81,12 @@ You can difine options via HTML data attributes or via JavaScript object (manual
 
 ```javascript
 $('#mycontainer').mosaicflow({
-	itemSelector: '.item'
+	itemSelector: '.item',
 	minItemWidth: 300
 });
 ```
 
-Don’t add `.mosaicflow` class when you manually initialize Mosaic Flow—it will make Mosaic Flow initializes twice.
+Don’t add `.mosaicflow` class when you manually initialize Mosaic Flow—it will ignore options specified through Javascript.
 
 Note that option names in JavaScript should be in camelCase but in HTML it should be data-attributes-with-dashes.
 
@@ -85,6 +105,13 @@ CSS class of column element.
 
 Minimun item (or column) width. Decrease this number if you want more columns, or increase if you want less.
 
+`itemHeightCalculation` (default: `auto`)
+
+This option allows you to specify which method is going to be used to calculate items' heights. 
+`auto` value will calculate automatically each item's height after being placed in a column, so it is smart enough if your items are responsive and height is being modified as width is (which will happen as columns shrink or expand).  
+`attribute` will try to grab the value placed in `height` attribute of images when these are used as items. This is faster than `auto` because no calculation is done.  
+Valid values: `auto`, `attribute`.
+
 
 ## Events
 
@@ -92,6 +119,42 @@ Minimun item (or column) width. Decrease this number if you want more columns, o
 
 Fire on every layout change: initialization or change number of columns after window resize.
 
+
+## Methods
+
+`add`
+
+Add any html element into next smallest column.  
+Example:
+
+```javascript
+// Init mosaicflow
+var container = $('#mycontainer').mosaicflow();
+
+// Create new html node and append to smallest column
+var elm = $('<div>A new added element</div>');
+container.mosaicflow('add', elm);
+```
+
+
+`remove`
+
+Remove a given element from its column and updates columns height accordingly. It does not removes the node, just detaches it from document.  
+Example: 
+
+```javascript
+// Init mosaicflow
+var container = $('#mycontainer').mosaicflow();
+
+// Select the desired element to be removed
+var elm = $('#item-3');
+
+// Tell mosaicflow to detach element from its column
+container.mosaicflow('remove',elm);
+
+// now you can place detached node in another location or remove it if you don't need it anymore.
+elm.remove();
+```
 
 ---
 
