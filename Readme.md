@@ -8,8 +8,8 @@ Pinterest like responsive image or HTML grid for jQuery that doesn’t suck. See
 - Simple and easy to install.
 - Responsive (shows as many columns as needed).
 - Very fast.
-- Only 1 KB (minified gzipped).
-- You can use bare `img` tags or custom `HTML`.
+- Only 1.5 KB (minified gzipped).
+- You can use bare `<img>` tags or arbitrary HTML.
 
 
 ## Installation
@@ -17,7 +17,7 @@ Pinterest like responsive image or HTML grid for jQuery that doesn’t suck. See
 Include jQuery and `jquery.mosaicflow.min.js` onto your page:
 
 ```html
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="jquery.mosaicflow.min.js"></script>
 ```
 
@@ -93,19 +93,19 @@ Note that option names in JavaScript should be in camelCase but in HTML it shoul
 
 ### Options
 
-`itemSelector` (default: `> *`)
+#### `itemSelector` (default: `> *`)
 
 jQuery selector of content item.
 
-`columnClass` (default: `mosaicflow__column`)
+#### `columnClass` (default: `mosaicflow__column`)
 
 CSS class of column element.
 
-`minItemWidth` (default: 240)
+#### `minItemWidth` (default: 240)
 
 Minimum item (or column) width. Decrease this number if you want more columns, or increase if you want less.
 
-`itemHeightCalculation` (default: `auto`)
+#### `itemHeightCalculation` (default: `auto`)
 
 Method of calculation items’ heights:
 
@@ -114,16 +114,16 @@ Method of calculation items’ heights:
 * `attribute`—will try to grab the value placed in `height` attribute of `<img>` tags when these are used as items. This is faster than `auto` because no calculation is done.
 
 
-## Events
+### Events
 
-`mosaicflow-layout`
+#### `mosaicflow-layout`
 
 Fire on every layout change: initialization or change number of columns after window resize.
 
 
-## Methods
+### Methods
 
-`add`
+#### `add`
 
 Add any html element into next smallest column.
 
@@ -138,7 +138,7 @@ var elm = $('<div>A new added element</div>');
 container.mosaicflow('add', elm);
 ```
 
-`remove`
+#### `remove`
 
 Remove a given element from its column and updates columns height accordingly. It does not removes the node, just detaches it from document.
 Example:
@@ -156,6 +156,14 @@ container.mosaicflow('remove', elm);
 // Now you can place detached node in another location or remove it if you don't need it anymore.
 elm.remove();
 ```
+
+
+## Release History
+
+### 2013-06-05 v0.2.0
+
+* Accepts arbitrary HTML, add/remove methods (by [clinisbut](https://github.com/clinisbut)).
+
 
 ---
 
