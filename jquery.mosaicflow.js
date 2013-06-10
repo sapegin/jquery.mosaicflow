@@ -90,6 +90,10 @@
 
 		refill: function() {
 			this.numberOfColumns = Math.floor(this.container.width() / this.options.minItemWidth);
+			// always keep at least one column 
+			if (this.numberOfColumns < 1)
+                		this.numberOfColumns = 1;
+                
 			var needToRefill = this.ensureColumns();
 			if (needToRefill) {
 				this.fillColumns();
