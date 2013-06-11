@@ -248,7 +248,7 @@
 			var column = elm.parents('.' + this.options.columnClass);
 
 			// Update column height
-			this.columnsHeights[column.index()]-= this.itemsHeights[elm.attr('id')];
+			this.columnsHeights[column.index() - 1]-= this.itemsHeights[elm.attr('id')];
 
 			elm.detach();
 
