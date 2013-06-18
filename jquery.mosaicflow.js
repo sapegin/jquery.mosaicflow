@@ -254,6 +254,20 @@
 			this.container.trigger('mosaicflow-layout');
 		},
 
+		empty: function() {
+			var columnsCnt = this.numberOfColumns;
+
+			this.items = $([]);
+			this.itemsHeights = {};
+
+			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
+				var column = this.columns.eq(columnIdx);
+				this.columnsHeights[columnIdx] = 0;
+				column.empty();
+			}
+			this.container.trigger('mosaicflow-layout');
+		},
+
 		generateUniqueId: function() {
 			// Increment the counter
 			this.__uid_item_counter++;
