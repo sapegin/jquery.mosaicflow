@@ -58,7 +58,7 @@
 			this.__uid = cnt++;
 			this.__uid_item_counter = 0;
 			this.items = this.container.find(this.options.itemSelector);
-			this.columns = [];
+			this.columns = $([]);
 			this.columnsHeights = [];
 			this.itemsHeights = {};
 			this.tempContainer = $('<div>').css('visibility', 'hidden');
