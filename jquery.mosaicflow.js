@@ -58,7 +58,7 @@
 			this.__uid = cnt++;
 			this.__uid_item_counter = 0;
 			this.items = this.container.find(this.options.itemSelector);
-			this.columns = [];
+			this.columns = $([]);
 			this.columnsHeights = [];
 			this.itemsHeights = {};
 			this.tempContainer = $('<div>').css('visibility', 'hidden');
@@ -229,12 +229,8 @@
 
 			// Update item collection.
 			// Item needs to be placed at the end of this.items to keep order of elements
-			var arr = [];
-			this.items.each(function() {
-				arr.push(this);
-			});
-			arr.push(elm[0]);
-			this.items = $(arr);
+			// JQuery add does exactly that
+			this.items.add(elm);
 
 			this.itemsHeights[elm.attr('id')] = height;
 			this.columnsHeights[lowestColumn] += height;
@@ -255,6 +251,20 @@
 			// Update item collection
 			this.items = this.items.not(elm);
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
+			this.container.trigger('mosaicflow-layout');
+		},
+
+		empty: function() {
+			var columnsCnt = this.numberOfColumns;
+
+			this.items = $([]);
+			this.itemsHeights = {};
+
+			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
+				var column = this.columns.eq(columnIdx);
+				this.columnsHeights[columnIdx] = 0;
+				column.empty();
+			}
 			this.container.trigger('mosaicflow-layout');
 		},
 
