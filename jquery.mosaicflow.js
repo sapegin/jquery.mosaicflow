@@ -206,10 +206,10 @@
 			if (this.autoCalculation) {
 				// Get height of elm
 				elm.css({
-					position: 'absolute',
+					position: 'static',
 					visibility: 'hidden',
 					display: 'block'
-				}).appendTo('body');
+				}).appendTo(this.columns.eq(lowestColumn));
 
 				height = elm.outerHeight();
 
