@@ -73,10 +73,10 @@ proident</p>
 
 ## Configuration and manual initialization
 
-You can difine options via HTML data attributes or via JavaScript object (manual initialization).
+You can define options via HTML data attributes or via JavaScript object (manual initialization).
 
 ```html
-<div class="clearfix mosaicflow" item-selector=".item" min-item-width="300">
+<div class="clearfix mosaicflow" data-item-selector=".item" data-min-item-width="300">
 ```
 
 ```javascript
