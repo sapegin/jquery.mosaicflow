@@ -160,9 +160,14 @@ elm.remove();
 
 ## Release History
 
+### 2013-07-01 v0.2.1
+
+* `empty` method (by [vitos555](https://github.com/vitos555)).
+* Bug fixes (by [mvavrecan](https://github.com/mvavrecan), [Sunify](https://github.com/Sunify) and [vitos555](https://github.com/vitos555)).
+
 ### 2013-06-05 v0.2.0
 
-* Accepts arbitrary HTML, add/remove methods (by [clinisbut](https://github.com/clinisbut)).
+* Accepts arbitrary HTML, `add`/`remove` methods (by [clinisbut](https://github.com/clinisbut)).
 
 
 ---
