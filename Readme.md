@@ -160,7 +160,7 @@ elm.remove();
 
 ## Release History
 
-### 2013-07-01 v0.2.1
+### 2013-07-01 v0.2.2
 
 * `empty` method (by [vitos555](https://github.com/vitos555)).
 * Bug fixes (by [mvavrecan](https://github.com/mvavrecan), [Sunify](https://github.com/Sunify) and [vitos555](https://github.com/vitos555)).
