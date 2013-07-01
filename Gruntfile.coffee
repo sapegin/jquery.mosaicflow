@@ -22,3 +22,4 @@ module.exports = (grunt) ->
 					"jquery.mosaicflow.min.js": "jquery.mosaicflow.js"
 
 	grunt.registerTask "default", ["jshint", "uglify"]
+	grunt.registerTask "build", ["uglify"]
