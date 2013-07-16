@@ -229,8 +229,9 @@
 
 			// Update item collection.
 			// Item needs to be placed at the end of this.items to keep order of elements
-			// JQuery add does exactly that
-			this.items.add(elm);
+			var itemsArr = this.items.toArray();
+			itemsArr.push(elm);
+			this.items = $(itemsArr);
 
 			this.itemsHeights[elm.attr('id')] = height;
 			this.columnsHeights[lowestColumn] += height;
