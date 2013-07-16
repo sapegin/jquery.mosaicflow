@@ -206,10 +206,10 @@
 			if (this.autoCalculation) {
 				// Get height of elm
 				elm.css({
-					position: 'absolute',
+					position: 'static',
 					visibility: 'hidden',
 					display: 'block'
-				}).appendTo('body');
+				}).appendTo(this.columns.eq(lowestColumn));
 
 				height = elm.outerHeight();
 
@@ -229,8 +229,9 @@
 
 			// Update item collection.
 			// Item needs to be placed at the end of this.items to keep order of elements
-			// JQuery add does exactly that
-			this.items.add(elm);
+			var itemsArr = this.items.toArray();
+			itemsArr.push(elm);
+			this.items = $(itemsArr);
 
 			this.itemsHeights[elm.attr('id')] = height;
 			this.columnsHeights[lowestColumn] += height;
@@ -266,6 +267,32 @@
 				column.empty();
 			}
 			this.container.trigger('mosaicflow-layout');
+		},
+
+		recomputeHeights: function() {
+			var columnsCnt = this.numberOfColumns;
+
+			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
+				var that = this;
+				var column = this.columns.eq(columnIdx);
+
+				this.columnsHeights[columnIdx] = 0;
+				column.children().each(function(){
+					var height = 0;
+					var item = $(this);
+					if (that.autoCalculation) {
+						// Check height after being placed in its column
+						height = item.outerHeight();
+					}
+					else {
+						// Read img height attribute
+						height = parseInt(item.find('img').attr('height'), 10);
+					}
+
+					that.itemsHeights[item.attr('id')] = height;
+					that.columnsHeights[columnIdx] += height;
+				});
+			}
 		},
 
 		generateUniqueId: function() {
