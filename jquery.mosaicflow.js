@@ -137,7 +137,7 @@
 
 				this.columns = this.workingContainer.find('.' + this.options.columnClass);
 				this.columns.each(function(){
-					$(this).width((100 / calculatedCnt) + '%');
+					$(this).css('width',(100 / calculatedCnt) + '%');
 				});
 				return true;
 			}
