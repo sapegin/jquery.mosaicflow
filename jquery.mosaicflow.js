@@ -50,7 +50,9 @@
 		this.container = container;
 		this.options = options;
 
+		this.container.trigger('start');
 		this.init();
+		this.container.trigger('ready');
 	}
 
 	Mosaicflow.prototype = {
@@ -89,10 +91,11 @@
 		},
 
 		refill: function() {
+			this.container.trigger('fill');
 			this.numberOfColumns = Math.floor(this.container.width() / this.options.minItemWidth);
 			// always keep at least one column 
 			if (this.numberOfColumns < 1)
-                		this.numberOfColumns = 1;
+                               this.numberOfColumns = 1;
                 
 			var needToRefill = this.ensureColumns();
 			if (needToRefill) {
@@ -102,6 +105,7 @@
 				this.columns.filter(':hidden').remove();
 			}
 			this.container.css('visibility', 'visible');
+			this.container.trigger('filled');
 		},
 
 		ensureColumns: function() {
@@ -137,7 +141,7 @@
 
 				this.columns = this.workingContainer.find('.' + this.options.columnClass);
 				this.columns.each(function(){
-					$(this).width((100 / calculatedCnt) + '%');
+					$(this).css('width',(100 / calculatedCnt) + '%');
 				});
 				return true;
 			}
@@ -200,6 +204,7 @@
 		},
 
 		add: function(elm) {
+			this.container.trigger('add');
 			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights);
 			var height = 0;
 
@@ -239,9 +244,11 @@
 
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
 			this.container.trigger('mosaicflow-layout');
+			this.container.trigger('added');
 		},
 
 		remove: function(elm) {
+			this.container.trigger('remove');
 			var column = elm.parents('.' + this.options.columnClass);
 
 			// Update column height
@@ -253,6 +260,7 @@
 			this.items = this.items.not(elm);
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
 			this.container.trigger('mosaicflow-layout');
+			this.container.trigger('removed');
 		},
 
 		empty: function() {
