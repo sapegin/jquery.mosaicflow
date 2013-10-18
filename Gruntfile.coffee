@@ -18,7 +18,7 @@ module.exports = (grunt) ->
 		uglify:
 			options:
 				banner: "/*! jQuery Mosaic Flow v<%= cmpnt.version %> by Artem Sapegin - " +
-						"http://sapegin.github.com/jquery.mosaicflow/ - Licensed MIT */\n"
+						"http://sapegin.github.io/jquery.mosaicflow/ - Licensed MIT */\n"
 			main:
 				files:
 					"jquery.mosaicflow.min.js": source
