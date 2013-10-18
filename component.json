@@ -1,8 +1,0 @@
-{
-  "name": "jquery.mosaicflow",
-  "version": "0.2.2",
-  "main": ["./jquery.mosaicflow.min.js"],
-  "dependencies": {
-    "jquery": ">=1.7"
-  }
-}
