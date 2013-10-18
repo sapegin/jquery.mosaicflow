@@ -1,4 +1,4 @@
-# Mosaic Flow
+# Mosaic Flow [![Build Status](https://travis-ci.org/sapegin/jquery.mosaicflow.png)](https://travis-ci.org/sapegin/jquery.mosaicflow)
 
 Pinterest like responsive image or HTML grid for jQuery that doesn’t suck. See [live example](http://sapegin.github.com/jquery.mosaicflow/).
 
