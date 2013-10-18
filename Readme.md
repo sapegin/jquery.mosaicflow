@@ -176,6 +176,12 @@ elm.remove();
 
 ## Release History
 
+### 2013-10-18 v0.2.3
+
+* `recomputeHeights` method (by [vitos555](https://github.com/vitos555)).
+* Events (by [matmuchrapna](https://github.com/matmuchrapna)).
+* Bug fixes (by [clinisbut](https://github.com/clinisbut) and [vitos555](https://github.com/vitos555)).
+
 ### 2013-07-01 v0.2.2
 
 * `empty` method (by [vitos555](https://github.com/vitos555)).
