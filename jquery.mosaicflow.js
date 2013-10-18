@@ -112,7 +112,7 @@
 			var createdCnt = this.columns.length;
 			var calculatedCnt = this.numberOfColumns;
 
-			this.tempContainer.width(this.container.width());
+			this.tempContainer.css('width', this.container.width());
 			this.workingContainer = createdCnt === 0 ? this.tempContainer : this.container;
 
 			if (calculatedCnt > createdCnt) {
@@ -138,11 +138,8 @@
 			}
 
 			if (calculatedCnt !== createdCnt) {
-
 				this.columns = this.workingContainer.find('.' + this.options.columnClass);
-				this.columns.each(function(){
-					$(this).css('width',(100 / calculatedCnt) + '%');
-				});
+				this.columns.css('width', (100 / calculatedCnt) + '%');
 				return true;
 			}
 
