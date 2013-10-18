@@ -8,7 +8,7 @@ module.exports = (grunt) ->
 	source = "jquery.mosaicflow.js"
 
 	grunt.initConfig
-		cmpnt: grunt.file.readJSON('component.json'),
+		cmpnt: grunt.file.readJSON('bower.json'),
 		jshint:
 			options:
 				jshintrc: ".jshintrc"
