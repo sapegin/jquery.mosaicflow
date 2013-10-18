@@ -11,13 +11,14 @@
 
 /*jshint browser:true, jquery:true, white:false, smarttabs:true */
 /*global jQuery:false, define:false*/
-(function (factory) {  // Try to register as an anonymous AMD module
+(function(factory) {  // Try to register as an anonymous AMD module
 	if (typeof define === 'function' && define.amd) {
 		define(['jquery'], factory);
-	} else {
+	}
+	else {
 		factory(jQuery);
 	}
-}(function ($) {
+}(function($) {
 	'use strict';
 	var cnt = 0;
 
@@ -93,10 +94,10 @@
 		refill: function() {
 			this.container.trigger('fill');
 			this.numberOfColumns = Math.floor(this.container.width() / this.options.minItemWidth);
-			// always keep at least one column 
+			// Always keep at least one column
 			if (this.numberOfColumns < 1)
                                this.numberOfColumns = 1;
-                
+
 			var needToRefill = this.ensureColumns();
 			if (needToRefill) {
 				this.fillColumns();
@@ -275,28 +276,30 @@
 		},
 
 		recomputeHeights: function() {
+			function computeHeight(idx, item) {
+				item = $(item);
+				var height = 0;
+				if (that.autoCalculation) {
+					// Check height after being placed in its column
+					height = item.outerHeight();
+				}
+				else {
+					// Read img height attribute
+					height = parseInt(item.find('img').attr('height'), 10);
+				}
+
+				that.itemsHeights[item.attr('id')] = height;
+				that.columnsHeights[columnIdx] += height;
+			}
+
+			var that = this;
 			var columnsCnt = this.numberOfColumns;
 
 			for (var columnIdx = 0; columnIdx < columnsCnt; columnIdx++) {
-				var that = this;
 				var column = this.columns.eq(columnIdx);
 
 				this.columnsHeights[columnIdx] = 0;
-				column.children().each(function(){
-					var height = 0;
-					var item = $(this);
-					if (that.autoCalculation) {
-						// Check height after being placed in its column
-						height = item.outerHeight();
-					}
-					else {
-						// Read img height attribute
-						height = parseInt(item.find('img').attr('height'), 10);
-					}
-
-					that.itemsHeights[item.attr('id')] = height;
-					that.columnsHeights[columnIdx] += height;
-				});
+				column.children().each(computeHeight);
 			}
 		},
 

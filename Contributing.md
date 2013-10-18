@@ -56,3 +56,19 @@ function foo(bar, fum) {
 - Install [EditorConfig](http://editorconfig.org/) plugin for your code editor.
 - If code you change uses different style (probably it’s an old code) use file’s style instead of style described on this page.
 - Feel free to [ask me](http://sapegin.me/contacts) anything you need.
+
+
+## How to run tests
+
+Install dependencies:
+
+```bash
+npm install grunt-cli -g
+npm install
+```
+
+Run:
+
+```bash
+grunt
+```

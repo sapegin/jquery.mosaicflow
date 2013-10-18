@@ -2,11 +2,15 @@
   "name": "mosaic-flow",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "test": "grunt"
+  },
   "devDependencies": {
+  	"grunt": "~0.4.1",
+  	"matchdep": "~0.1.2",
     "grunt-contrib-concat": "~0.3.0",
-    "matchdep": "~0.1.2",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-jshint": "~0.4.3",
-    "grunt": "~0.4.1"
+    "grunt-jscs-checker": "~0.2.0"
   }
 }
