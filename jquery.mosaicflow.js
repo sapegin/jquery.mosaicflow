@@ -64,7 +64,7 @@
 			this.columns = $([]);
 			this.columnsHeights = [];
 			this.itemsHeights = {};
-			this.tempContainer = $('<div>').css({'visibility' : 'hidden', 'width' : '100%'});
+			this.tempContainer = $('<div>').css({'visibility': 'hidden', 'width': '100%'});
 			this.workOnTemp = false;
 			this.autoCalculation = this.options.itemHeightCalculation === 'auto';
 
