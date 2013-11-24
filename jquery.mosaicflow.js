@@ -64,7 +64,7 @@
 			this.columns = $([]);
 			this.columnsHeights = [];
 			this.itemsHeights = {};
-			this.tempContainer = $('<div>').css('visibility', 'hidden');
+			this.tempContainer = $('<div>').css({'visibility': 'hidden', 'width': '100%'});
 			this.workOnTemp = false;
 			this.autoCalculation = this.options.itemHeightCalculation === 'auto';
 
@@ -113,7 +113,6 @@
 			var createdCnt = this.columns.length;
 			var calculatedCnt = this.numberOfColumns;
 
-			this.tempContainer.css('width', this.container.width());
 			this.workingContainer = createdCnt === 0 ? this.tempContainer : this.container;
 
 			if (calculatedCnt > createdCnt) {
