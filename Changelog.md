@@ -1,3 +1,7 @@
+### 2013-11-24 v0.2.4
+
+* Temporary container never shrunk when resizing viewport (by [raulferras](https://github.com/raulferras)).
+
 ### 2013-10-18 v0.2.3
 
 * `recomputeHeights` method (by [vitos555](https://github.com/vitos555)).
