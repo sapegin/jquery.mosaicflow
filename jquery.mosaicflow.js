@@ -206,6 +206,7 @@
 			var height = 0;
 
 			if (this.autoCalculation) {
+
 				// Get height of elm
 				elm.css({
 					position: 'static',
@@ -214,6 +215,19 @@
 				}).appendTo(this.columns.eq(lowestColumn));
 
 				height = elm.outerHeight();
+
+				var inlineImages = elm.find('img');
+				if (inlineImages.length !== 0) {
+
+					inlineImages.each(function() {
+						var image = $(this);
+						var imageSizes = getImageSizes(image);
+						var actual_height = (image.width()*imageSizes.height)/imageSizes.width;
+
+						height += actual_height;
+					});
+
+				}
 
 				elm.detach().css({
 					position: 'static',
@@ -322,6 +336,23 @@
 			options[key.replace(/-(\w)/g, upper)] = data[key];
 		}
 		return options;
+	}
+
+	function getImageSizes(image) {
+		var sizes = {};
+
+		sizes.height = parseInt(image.attr('height'), 10);
+		sizes.width = parseInt(image.attr('width'), 10);
+
+		if (sizes.height === 0 || sizes.width === 0) {
+			var utilImage = new Image();
+			utilImage.src = image.attr('src');
+
+			sizes.width = utilImage.width;
+			sizes.height = utilImage.height;
+		}
+
+		return sizes;
 	}
 
 	// Auto init
