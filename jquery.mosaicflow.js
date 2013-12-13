@@ -59,7 +59,7 @@
 	Mosaicflow.prototype = {
 		init: function() {
 			this.__uid = cnt++;
-			this.__uid_item_counter = 0;
+			this.__uidItemCounter = 0;
 			this.items = this.container.find(this.options.itemSelector);
 			this.columns = $([]);
 			this.columnsHeights = [];
@@ -222,9 +222,9 @@
 					inlineImages.each(function() {
 						var image = $(this);
 						var imageSizes = getImageSizes(image);
-						var actual_height = (image.width()*imageSizes.height)/imageSizes.width;
+						var actualHeight = (image.width()*imageSizes.height)/imageSizes.width;
 
-						height += actual_height;
+						height += actualHeight;
 					});
 
 				}
@@ -318,10 +318,10 @@
 
 		generateUniqueId: function() {
 			// Increment the counter
-			this.__uid_item_counter++;
+			this.__uidItemCounter++;
 
 			// Return an unique ID
-			return 'mosaic-' + this.__uid + '-itemid-' + this.__uid_item_counter;
+			return 'mosaic-' + this.__uid + '-itemid-' + this.__uidItemCounter;
 		}
 	};
 
