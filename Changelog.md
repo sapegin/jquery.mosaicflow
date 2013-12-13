@@ -1,3 +1,7 @@
+### 2013-12-13 v0.2.5
+
+* Fixed error with updating lowest column while adding new items.
+
 ### 2013-11-24 v0.2.4
 
 * Temporary container never shrunk when resizing viewport (by [raulferras](https://github.com/raulferras)).
