@@ -8,6 +8,7 @@
 	"latedef": false,
 	"newcap": true,
 	"undef": true,
+	"camelcase": true,
 	"globals": {
 		"Modernizr": true
 	}
