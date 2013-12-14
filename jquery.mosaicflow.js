@@ -43,8 +43,7 @@
 	$.fn.mosaicflow.defaults = {
 		itemSelector: '> *',
 		columnClass: 'mosaicflow__column',
-		minItemWidth: 240,
-		itemHeightCalculation: 'auto'
+		minItemWidth: 240
 	};
 
 	function Mosaicflow(container, options) {
@@ -66,7 +65,6 @@
 			this.itemsHeights = {};
 			this.tempContainer = $('<div>').css({'visibility': 'hidden', 'width': '100%'});
 			this.workOnTemp = false;
-			this.autoCalculation = this.options.itemHeightCalculation === 'auto';
 
 			this.container.append(this.tempContainer);
 
@@ -82,21 +80,20 @@
 			});
 
 			this.container.css('visibility', 'hidden');
-			if (this.autoCalculation) {
-				$(window).load($.proxy(this.refill, this));
-			}
-			else {
-				this.refill();
-			}
+
+			$(window).load($.proxy(this.refill, this));
+
 			$(window).resize($.proxy(this.refill, this));
 		},
 
 		refill: function() {
 			this.container.trigger('fill');
 			this.numberOfColumns = Math.floor(this.container.width() / this.options.minItemWidth);
+
 			// Always keep at least one column
-			if (this.numberOfColumns < 1)
-                               this.numberOfColumns = 1;
+			if (this.numberOfColumns < 1) {
+			   this.numberOfColumns = 1;
+			}
 
 			var needToRefill = this.ensureColumns();
 			if (needToRefill) {
@@ -158,14 +155,7 @@
 					var height = 0;
 					column.append(item);
 
-					if (this.autoCalculation) {
-						// Check height after being placed in its column
-						height = getItemHeight(item);
-					}
-					else {
-						// possible only if elm is img with defined "height" and "width" attributes
-						height = getImageHeight(item);
-					}
+					height = isAutoCalcPossible(item) ? getImageHeight(item) : getItemHeight(item);
 
 					this.itemsHeights[item.attr('id')] = height;
 					this.columnsHeights[columnIdx] += height;
@@ -205,8 +195,11 @@
 			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights);
 			var height = 0;
 
-			if (this.autoCalculation) {
 
+			if (isAutoCalcPossible(elm)) {
+				height = getImageHeight(elm);
+			}
+			else {
 				// Get height of elm
 				elm.css({
 					position: 'static',
@@ -220,10 +213,6 @@
 					position: 'static',
 					visibility: 'visible'
 				});
-			}
-			else {
-				// possible only if elm is img with defined "height" and "width" attributes
-				height = getImageHeight(elm);
 			}
 
 			if (!elm.attr('id')) {
@@ -279,15 +268,7 @@
 		recomputeHeights: function() {
 			function computeHeight(idx, item) {
 				item = $(item);
-				var height = 0;
-				if (that.autoCalculation) {
-					// Check height after being placed in its column
-					height = getItemHeight(item);
-				}
-				else {
-					// possible only if elm is img with defined "height" and "width" attributes
-					height = getImageHeight(item);
-				}
+				var height = isAutoCalcPossible(item) ? getImageHeight(item) : getItemHeight(item);
 
 				that.itemsHeights[item.attr('id')] = height;
 				that.columnsHeights[columnIdx] += height;
@@ -362,6 +343,14 @@
 		}
 
 		return height;
+	}
+
+	function isAutoCalcPossible(item) {
+		item = $(item);
+		var height = parseInt(item.attr('height'), 10);
+		var width = parseInt(item.attr('width'), 10);
+
+		return item.is('img') && height !== 0 && width !== 0;
 	}
 
 	// Auto init
