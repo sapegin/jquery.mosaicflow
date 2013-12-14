@@ -160,20 +160,11 @@
 
 					if (this.autoCalculation) {
 						// Check height after being placed in its column
-						height = item.outerHeight();
-
-						var inlineImages = item.find('img');
-						if (inlineImages.length !== 0) {
-
-							inlineImages.each(function(i, item) {
-								height += getImageHeigt(item);
-							});
-
-						}
+						height = getItemHeight(item);
 					}
 					else {
 						// possible only if elm is img with defined "height" and "width" attributes
-						height = getImageHeigt(item);
+						height = getImageHeight(item);
 					}
 
 					this.itemsHeights[item.attr('id')] = height;
@@ -214,8 +205,6 @@
 			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights);
 			var height = 0;
 
-
-
 			if (this.autoCalculation) {
 
 				// Get height of elm
@@ -225,16 +214,7 @@
 					display: 'block'
 				}).appendTo(this.columns.eq(lowestColumn));
 
-				height = elm.outerHeight();
-
-				var inlineImages = elm.find('img');
-				if (inlineImages.length !== 0) {
-
-					inlineImages.each(function(i, item) {
-						height += getImageHeigt(item);
-					});
-
-				}
+				height = getItemHeight(elm);
 
 				elm.detach().css({
 					position: 'static',
@@ -243,7 +223,7 @@
 			}
 			else {
 				// possible only if elm is img with defined "height" and "width" attributes
-				height = getImageHeigt(elm);
+				height = getImageHeight(elm);
 			}
 
 			if (!elm.attr('id')) {
@@ -302,20 +282,11 @@
 				var height = 0;
 				if (that.autoCalculation) {
 					// Check height after being placed in its column
-					height = item.outerHeight();
-
-					var inlineImages = item.find('img');
-					if (inlineImages.length !== 0) {
-
-						inlineImages.each(function(i, item) {
-							height += getImageHeigt(item);
-						});
-
-					}
+					height = getItemHeight(item);
 				}
 				else {
 					// possible only if elm is img with defined "height" and "width" attributes
-					height = getImageHeigt(item);
+					height = getImageHeight(item);
 				}
 
 				that.itemsHeights[item.attr('id')] = height;
@@ -372,11 +343,25 @@
 		return sizes;
 	}
 
-	function getImageHeigt(image) {
+	function getImageHeight(image) {
 		image = $(image);
 		var sizes = getImageSizes(image);
 
 		return (image.width()*sizes.height)/sizes.width;
+	}
+
+	function getItemHeight(item) {
+		item = $(item);
+		var height = item.outerHeight();
+
+		var inlineImages = item.find('img');
+		if (inlineImages.length !== 0) {
+			inlineImages.each(function(i, item) {
+				height += getImageHeight(item);
+			});
+		}
+
+		return height;
 	}
 
 	// Auto init
