@@ -105,13 +105,10 @@ CSS class of column element.
 
 Minimum item (or column) width. Decrease this number if you want more columns, or increase if you want less.
 
-#### `itemHeightCalculation` (default: `auto`)
 
-Method of calculation items’ heights:
+### Performance
 
-* `auto`—will calculate automatically each item’s height after being placed in a column, so it is smart enough if your items are responsive and height is being modified as width is (which will happen as columns shrink or expand).
-
-* `attribute`—will try to grab the value placed in `height` attribute of `<img>` tags when these are used as items. This is faster than `auto` because no calculation is done.
+You can add `width` and `height` attributes to images in mosaicflow container to force jquery.mosaicflow work faster.
 
 
 ### Events
