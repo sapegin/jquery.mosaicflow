@@ -1,6 +1,7 @@
 # Mosaic Flow
 
 [![Build Status](https://travis-ci.org/sapegin/jquery.mosaicflow.png)](https://travis-ci.org/sapegin/jquery.mosaicflow)
+[![Bower version](https://badge.fury.io/bo/jquery.mosaicflow.png)](http://badge.fury.io/bo/jquery.mosaicflow)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 Pinterest like responsive image or HTML grid for jQuery that doesn’t suck. See [live example](http://sapegin.github.com/jquery.mosaicflow/).
