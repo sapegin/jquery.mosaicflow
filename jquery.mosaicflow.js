@@ -43,6 +43,7 @@
 	$.fn.mosaicflow.defaults = {
 		itemSelector: '> *',
 		columnClass: 'mosaicflow__column',
+		itemHeightCalculation: 'auto',
 		minItemWidth: 240
 	};
 
@@ -65,6 +66,7 @@
 			this.itemsHeights = {};
 			this.tempContainer = $('<div>').css({'visibility': 'hidden', 'width': '100%'});
 			this.workOnTemp = false;
+			this.autoCalculation = this.options.itemHeightCalculation === 'auto';
 
 			this.container.append(this.tempContainer);
 
@@ -81,9 +83,7 @@
 
 			this.container.css('visibility', 'hidden');
 
-			$(window).load($.proxy(this.refill, this));
-
-			$(window).resize($.proxy(this.refill, this));
+			$(window).on('load resize', $.proxy(this.refill, this));
 		},
 
 		refill: function() {
@@ -155,7 +155,7 @@
 					var height = 0;
 					column.append(item);
 
-					height = isAutoCalcPossible(item) ? getImageHeight(item) : getItemHeight(item);
+					height = this.getItemHeight(item);
 
 					this.itemsHeights[item.attr('id')] = height;
 					this.columnsHeights[columnIdx] += height;
@@ -207,7 +207,7 @@
 					display: 'block'
 				}).appendTo(this.columns.eq(lowestColumn));
 
-				height = getItemHeight(elm);
+				height = this.getItemHeight(elm);
 
 				elm.detach().css({
 					position: 'static',
@@ -268,7 +268,7 @@
 		recomputeHeights: function() {
 			function computeHeight(idx, item) {
 				item = $(item);
-				var height = isAutoCalcPossible(item) ? getImageHeight(item) : getItemHeight(item);
+				var height = that.getItemHeight(item);
 
 				that.itemsHeights[item.attr('id')] = height;
 				that.columnsHeights[columnIdx] += height;
@@ -291,6 +291,33 @@
 
 			// Return an unique ID
 			return 'mosaic-' + this.__uid + '-itemid-' + this.__uidItemCounter;
+		},
+
+		getItemHeight: function(item) {
+			var height = 0;
+
+			// It it’s just <img> with height attribute ignore itemHeightCalculation option
+			if (item[0].tagName === 'IMG') {
+				var heightAttr = item.attr('height');
+				if (heightAttr) {
+					height += parseInt(heightAttr, 10);
+				}
+			}
+
+			if (height === 0) {
+				if (!this.autoCalculation) {
+					// Manual calculation: try to use first <img>’s height attribute
+					height += parseInt(item.find('img').attr('height'), 10);
+				}
+				if (height === 0) {
+					// Auto calculation
+					height += getItemHeight(item);
+				}
+			}
+
+			console.log(height);
+
+			return height;
 		}
 	};
 
@@ -325,32 +352,22 @@
 	}
 
 	function getImageHeight(image) {
-		image = $(image);
 		var sizes = getImageSizes(image);
-
-		return (image.width()*sizes.height)/sizes.width;
+		var height = (image.width() * sizes.height) / sizes.width;
+		return height || 0;
 	}
 
 	function getItemHeight(item) {
-		item = $(item);
 		var height = item.outerHeight();
 
 		var inlineImages = item.find('img');
-		if (inlineImages.length !== 0) {
-			inlineImages.each(function(i, item) {
-				height += getImageHeight(item);
+		if (inlineImages.length) {
+			inlineImages.each(function(idx, img) {
+				height += getImageHeight($(img));
 			});
 		}
 
 		return height;
-	}
-
-	function isAutoCalcPossible(item) {
-		item = $(item);
-		var height = parseInt(item.attr('height'), 10);
-		var width = parseInt(item.attr('width'), 10);
-
-		return item.is('img') && height !== 0 && width !== 0;
 	}
 
 	// Auto init
