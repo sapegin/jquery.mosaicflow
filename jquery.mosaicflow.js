@@ -44,7 +44,8 @@
 		itemSelector: '> *',
 		columnClass: 'mosaicflow__column',
 		minItemWidth: 240,
-		itemHeightCalculation: 'auto'
+		itemHeightCalculation: 'auto',
+		threshold: 40
 	};
 
 	function Mosaicflow(container, options) {
@@ -193,6 +194,8 @@
 				var newLowestHeight = lowestHeight + lastInHighestColumnHeight;
 
 				if (newLowestHeight >= highestHeight) return;
+
+				if (highestHeight - newLowestHeight < this.options.threshold) return;
 
 				this.columns.eq(lowestColumn).append(lastInHighestColumn);
 				columnsHeights[highestColumn] -= lastInHighestColumnHeight;
