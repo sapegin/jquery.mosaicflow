@@ -105,6 +105,10 @@ jQuery selector of content item.
 
 CSS class of column element.
 
+#### `minColumns` (default: 2)
+
+Minimum number of columns. Especially useful for mobile devices.
+
 #### `minItemWidth` (default: 240)
 
 Minimum item (or column) width. Decrease this number if you want more columns, or increase if you want less.
