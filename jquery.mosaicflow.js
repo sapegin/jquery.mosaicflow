@@ -44,6 +44,7 @@
 		itemSelector: '> *',
 		columnClass: 'mosaicflow__column',
 		minItemWidth: 240,
+		minColumns: 2,
 		itemHeightCalculation: 'auto',
 		threshold: 40
 	};
@@ -95,9 +96,9 @@
 		refill: function() {
 			this.container.trigger('fill');
 			this.numberOfColumns = Math.floor(this.container.width() / this.options.minItemWidth);
-			// Always keep at least one column
-			if (this.numberOfColumns < 1)
-                               this.numberOfColumns = 1;
+			// Always keep min columns number
+			if (this.numberOfColumns < this.options.minColumns)
+				this.numberOfColumns = this.options.minColumns;
 
 			var needToRefill = this.ensureColumns();
 			if (needToRefill) {
