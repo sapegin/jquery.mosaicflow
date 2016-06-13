@@ -112,7 +112,7 @@
 		},
 
 		ensureColumns: function() {
-			var createdCnt = this.columns.length;
+			var createdCnt = this.columns.filter(':visible').length;
 			var calculatedCnt = this.numberOfColumns;
 
 			this.workingContainer = createdCnt === 0 ? this.tempContainer : this.container;
