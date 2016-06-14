@@ -128,19 +128,19 @@ Method of calculation items’ heights:
 
 Fire on every layout change: initialization or change number of columns after window resize.
 
-#### `start` / `ready`
+#### `mosaicflow-start` / `mosaicflow-ready`
 
 Fire before / after the mosaicflow init it's work.
 
-#### `fill` / `filled`
+#### `mosaicflow-fill` / `mosaicflow-filled`
 
 Fire before / after reorganized columns.
 
-#### `add` / `added`
+#### `mosaicflow-item-add` / `mosaicflow-item-added`
 
 Fire before / after adding items.
 
-#### `remove` / `removed`
+#### `mosaicflow-item-remove` / `mosaicflow-item-removed`
 
 Fire before / after removing items.
 

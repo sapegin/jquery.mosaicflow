@@ -53,9 +53,9 @@
 		this.container = container;
 		this.options = options;
 
-		this.container.trigger('start');
+		this.container.trigger('mosaicflow-start');
 		this.init();
-		this.container.trigger('ready');
+		this.container.trigger('mosaicflow-ready');
 	}
 
 	Mosaicflow.prototype = {
@@ -94,7 +94,7 @@
 		},
 
 		refill: function() {
-			this.container.trigger('fill');
+			this.container.trigger('mosaicflow-fill');
 			this.numberOfColumns = Math.floor(this.container.width() / this.options.minItemWidth);
 			// Always keep min columns number
 			if (this.numberOfColumns < this.options.minColumns)
@@ -108,7 +108,7 @@
 				this.columns.filter(':hidden').remove();
 			}
 			this.container.css('visibility', 'visible');
-			this.container.trigger('filled');
+			this.container.trigger('mosaicflow-filled');
 		},
 
 		ensureColumns: function() {
@@ -205,7 +205,7 @@
 		},
 
 		add: function(elm) {
-			this.container.trigger('add');
+			this.container.trigger('mosaicflow-item-add', [elm]);
 			var lowestColumn = $.inArray(Math.min.apply(null, this.columnsHeights), this.columnsHeights);
 			var height = 0;
 
@@ -259,11 +259,11 @@
 
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
 			this.container.trigger('mosaicflow-layout');
-			this.container.trigger('added');
+			this.container.trigger('mosaicflow-item-added', [elm]);
 		},
 
 		remove: function(elm) {
-			this.container.trigger('remove');
+			this.container.trigger('mosaicflow-item-remove', [elm]);
 			var column = elm.parents('.' + this.options.columnClass);
 
 			// Update column height
@@ -275,7 +275,7 @@
 			this.items = this.items.not(elm);
 			this.levelBottomEdge(this.itemsHeights, this.columnsHeights);
 			this.container.trigger('mosaicflow-layout');
-			this.container.trigger('removed');
+			this.container.trigger('mosaicflow-item-removed', [elm]);
 		},
 
 		empty: function() {
