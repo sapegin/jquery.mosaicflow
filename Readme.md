@@ -29,12 +29,12 @@ Add some CSS for column layout and to make your content responsive:
 
 ```css
 .mosaicflow__column {
-	float:left;
-	}
+  float: left;
+}
 .mosaicflow__item img {
-	display:block;
-	width:100%;
-	height:auto;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 ```
 
@@ -42,13 +42,13 @@ Add `.mosaicflow` CSS class to your content’s contaier:
 
 ```html
 <div class="clearfix mosaicflow">
-	<div class="mosaicflow__item">
-		<img width="500" height="300" src="1.jpg" alt="">
-	</div>
-	<div class="mosaicflow__item">
-		<img width="500" height="500" src="2.jpg" alt="">
-	</div>
-	…
+  <div class="mosaicflow__item">
+    <img src="1.jpg" width="500" height="300" alt="">
+  </div>
+  <div class="mosaicflow__item">
+    <img src="2.jpg" width="500" height="500" alt="">
+  </div>
+  …
 </div>
 ```
 
@@ -59,17 +59,15 @@ You can also use custom HTML as items:
 
 ```html
 <div class="clearfix mosaicflow">
-	<div class="mosaicflow__item">
-		<h4>Lorem ipsum dolor sit amet</h4>
-		<p>Excepteur sint occaecat cupidatat non
-proident</p>
-	</div>
-	<div class="mosaicflow__item">
-		<h4>Lorem ipsum dolor sit amet</h4>
-		<p>Excepteur sint occaecat cupidatat non
-proident</p>
-	</div>
-	…
+  <div class="mosaicflow__item">
+    <h4>Lorem ipsum dolor sit amet</h4>
+    <p>Excepteur sint occaecat cupidatat non proident</p>
+  </div>
+  <div class="mosaicflow__item">
+    <h4>Lorem ipsum dolor sit amet</h4>
+    <p>Excepteur sint occaecat cupidatat non proident</p>
+  </div>
+  …
 </div>
 ```
 
@@ -85,8 +83,8 @@ You can define options via HTML data attributes or via JavaScript object (manual
 
 ```javascript
 $('#mycontainer').mosaicflow({
-	itemSelector: '.item',
-	minItemWidth: 300
+  itemSelector: '.item',
+  minItemWidth: 300
 });
 ```
 
@@ -105,11 +103,11 @@ jQuery selector of content item.
 
 CSS class of column element.
 
-#### `minColumns` (default: 2)
+#### `minColumns` (default: `2`)
 
 Minimum number of columns. Especially useful for mobile devices.
 
-#### `minItemWidth` (default: 240)
+#### `minItemWidth` (default: `240`)
 
 Minimum item (or column) width. Decrease this number if you want more columns, or increase if you want less.
 
