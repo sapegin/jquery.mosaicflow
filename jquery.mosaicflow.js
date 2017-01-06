@@ -23,7 +23,7 @@
 	var cnt = 0;
 
 	$.fn.mosaicflow = function(options) {
-		var args = Array.prototype.slice.call(arguments,0);
+		var args = Array.prototype.slice.call(arguments, 0);
 
 		return this.each(function() {
 			var elm = $(this);
@@ -31,7 +31,7 @@
 
 			if (!data) {
 				options = $.extend({}, $.fn.mosaicflow.defaults, options, dataToOptions(elm));
-				data = new Mosaicflow(elm,options);
+				data = new Mosaicflow(elm, options);
 				elm.data('mosaicflow', data);
 			}
 			else if (typeof options === 'string') {
@@ -85,7 +85,7 @@
 
 			this.container.css('visibility', 'hidden');
 			if (this.autoCalculation) {
-				$(window).on('load',$.proxy(this.refill, this));
+				$(window).on('load', $.proxy(this.refill, this));
 			}
 			else {
 				this.refill();
@@ -224,15 +224,13 @@
 
 				var inlineImages = elm.find('img');
 				if (inlineImages.length !== 0) {
-
 					inlineImages.each(function() {
 						var image = $(this);
 						var imageSizes = getImageSizes(image);
-						var actualHeight = (image.width()*imageSizes.height)/imageSizes.width;
+						var actualHeight = (image.width() * imageSizes.height) / imageSizes.width;
 
 						height += actualHeight;
 					});
-
 				}
 
 				elm.detach().css({
@@ -269,7 +267,7 @@
 			var column = elm.parents('.' + this.options.columnClass);
 
 			// Update column height
-			this.columnsHeights[column.index() - 1]-= this.itemsHeights[elm.attr('id')];
+			this.columnsHeights[column.index() - 1] -= this.itemsHeights[elm.attr('id')];
 
 			elm.detach();
 
