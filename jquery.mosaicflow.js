@@ -85,7 +85,7 @@
 
 			this.container.css('visibility', 'hidden');
 			if (this.autoCalculation) {
-				$(window).load($.proxy(this.refill, this));
+				$(window).on('load',$.proxy(this.refill, this));
 			}
 			else {
 				this.refill();
